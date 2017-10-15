@@ -1,22 +1,24 @@
-Sub VariableSetting():
+Sub Calculator()
 
-    ' Create variables for the Price, Tax, Quantity, and Total
-    ' <YOUR CODE GOES HERE>
-
-
-
-
-    ' Retrieve and store the data values in each variable
-    ' <YOUR CODE GOES HERE>
-
-
-
-
-    ' Calculate the total by using each of the variables 
-    Total = Price * (1 + Tax) * Quantity
-
-    ' Create a Message Box for the Total and insert into cell
-    MsgBox("Your total is $" + str(Total))
-    Range("E2").value = Total
+    ' DIM is short for 'declare in memory'
+    
+    ' variable declaration
+    
+    Dim Inputprice As Double
+    Dim TaxRate As Double
+    Dim Quantity As Double
+    Dim Total As Double
+    
+    ' variable assingment
+    
+    Inputprice = Range("B2").Value
+    TaxRate = Range("C2").Value
+    Quantity = Range("D2").Value
+    
+    Total = Inputprice * (1 + TaxRate) * Quantity
+    
+    ' populate the derived Total in the cell
+    
+    Cells(2, 5).Value = Total
 
 End Sub
