@@ -7,29 +7,33 @@
      ' One to see if there is a relationship between Program type and Rating
      ' One to see if there is a relationship between Date and Rating
 
-Sub StarCounter()
+Sub fullstar()
 
-  ' Create a variable to hold the StarCounter. We will repeatedly use this.
-  Dim StarCount As Integer
+Dim counter As Integer
+Dim lastrow As Integer
+Dim lastcol As Integer
 
+'get the last row and last col
+lastrow = Sheets("Sheet1").Range("A" & Rows.Count).End(xlUp).Row
+lastcol = Sheets("Sheet1").Cells(1, Columns.Count).End(xlToLeft).Column
 
-  ' Loop through each row
-  For i = 2 To 51
+    'loop through each student
+    For i = 2 To lastrow
+        
+        'initialize a counter object to count the number of instances of the word "Full-Star"
+        counter = 0
 
-    ' Initially set the StarCounter to be 0 for each row
-      StarCount = 0
-
-    ' While in each row, loop through each star column
+        'for each student through the star columns
         For j = 1 To 5
 
-      ' If a column contains the word "Full-Star"...
-          If Cells(i, j + 3).Value = "Full-Star" Then
-        ' Add 1 to the StarCounter
-            StarCount = StarCount + 1
-          End If
+            'execute a if conditional statment
+            If Cells(i, j + 3).Value = "Full-Star" Then
+                counter = counter + 1
+            End If
+
         Next j
-    ' Once we've completed all rows, print the value in the total column
-        Cells(i, 9).Value = StarCount
-  Next i
+        'assign the counter value to the total column
+        Cells(i, lastcol).Value = counter
+    Next i
 
 End Sub
